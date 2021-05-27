@@ -5,7 +5,7 @@ require('dotenv').config();
 
 // import routes
 const authRoutes = require('./routes/auth');
-const secureRoutes = require('./routes/secure');
+const challengeRoutes = require('./routes/challenge');
 
 
 // app
@@ -26,7 +26,7 @@ app.use(express.json());
 
 // routes middleware
 app.use('/api', authRoutes);
-app.use('/api', secureRoutes);
+app.use('/api', challengeRoutes);
 
 const port = process.env.PORT || 8000;
 

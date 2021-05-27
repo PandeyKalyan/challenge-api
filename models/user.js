@@ -4,6 +4,11 @@ const { v1: uuidv1 } = require('uuid');
 
 const userSchema = new mongoose.Schema(
     {
+        name: {
+            type: String,
+            trim: true,
+            required: true
+        },
         email: {
             type: String,
             trim: true,
@@ -14,7 +19,11 @@ const userSchema = new mongoose.Schema(
             type: String,
             required: true
         },
-        salt: String
+        salt: String,
+        level: {
+            type: Number,
+            default: 0
+        }
     },
     { timestamps: true }
 );
