@@ -20,7 +20,11 @@ const userSchema = new mongoose.Schema(
             required: true
         },
         salt: String,
-        level: {
+        upvotes: {
+            type: Number,
+            default: 0
+        },
+        downvotes: {
             type: Number,
             default: 0
         }

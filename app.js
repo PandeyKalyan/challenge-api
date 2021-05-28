@@ -6,6 +6,8 @@ require('dotenv').config();
 // import routes
 const authRoutes = require('./routes/auth');
 const challengeRoutes = require('./routes/challenge');
+const answerRoutes = require('./routes/answer');
+
 
 
 // app
@@ -15,7 +17,9 @@ const app = express();
 mongoose
     .connect(process.env.DATABASE, {
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
+        useFindAndModify: false,
+        useCreateIndex: true
     })
     .then(() => console.log('DB Connected'))
     .catch(e => console.error(e));
@@ -27,6 +31,8 @@ app.use(express.json());
 // routes middleware
 app.use('/api', authRoutes);
 app.use('/api', challengeRoutes);
+app.use('/api', answerRoutes);
+
 
 const port = process.env.PORT || 8000;
 
