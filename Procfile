@@ -1,1 +1,1 @@
-web: npx pm2 start app.js
+web: nodemon app.js
