@@ -27,6 +27,6 @@ exports.list = (req, res) => {
 
 exports.topTen = (req, res) => {
     TopChallenge.find().populate('challenges').exec((err, data) => {
-        res.json(data);
+        res.json(data[0].challenges);
     })
 }

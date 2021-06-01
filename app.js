@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const cors = require('cors');
+const cookieParser = require('cookie-parser')
 require('dotenv').config();
 
 // import routes
@@ -32,6 +33,7 @@ mongoose
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
+app.use(cookieParser());
 
 // routes middleware
 app.use('/api', authRoutes);
