@@ -1,21 +1,20 @@
 const User = require('../models/user');
 const jwt = require('jsonwebtoken'); // to generate signed token
 const expressJwt = require('express-jwt'); // for authorization check
+const { errorHandler } = require('../helpers/db-error-handler');
+
 
 exports.signup = (req, res) => {
     const user = new User(req.body);
     user.save((err, user) => {
         if (err) {
             return res.status(400).json({
-                // error: errorHandler(err)
-                error: err
+                error: errorHandler(err)
             });
         }
         user.salt = undefined;
         user.hashed_password = undefined;
-        res.json({
-            user
-        });
+        this.signin(req, res);
     });
 };
 
@@ -40,8 +39,8 @@ exports.signin = (req, res) => {
         // persist the token as 't' in cookie with expiry date
         res.cookie('t', token, { expire: new Date() + 9999 });
         // return response with user and token to frontend client
-        const { _id, email } = user;
-        return res.json({ token, user: { _id, email } });
+        const { _id, email, name } = user;
+        return res.json({token, _id, email, name});
     });
 };
 
