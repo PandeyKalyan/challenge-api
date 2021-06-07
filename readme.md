@@ -1067,8 +1067,6 @@ The endpoints provided by the API are as follows:
     "downvotes": 28,
     "name": "John Doe",
     "email": "john@doe.com",
-    "salt": "4658bfa0-bfd6-11eb-89c3-b176df70c22b",
-    "hashed_password": "243f1d6fa5f78c21e55688728853f65d4213d429",
     "createdAt": "2021-05-28T17:00:58.911Z",
     "updatedAt": "2021-06-07T08:39:23.804Z",
     "__v": 0,
@@ -1076,5 +1074,8 @@ The endpoints provided by the API are as follows:
     }
     ```
   User's level is calculated as: level = Math.floor(upvotes/10) - Math.floor(downvotes/5)
+  
+The API is hosted in heroku cloud and the link is:
+https://blooming-sea-62499.herokuapp.com
 
 
